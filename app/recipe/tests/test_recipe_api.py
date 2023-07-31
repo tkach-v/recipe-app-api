@@ -78,5 +78,5 @@ class PriveteRecipeAPITests(TestCase):
         res = self.client.get(RECIPES_URL)
 
         self.assertEqual(len(res.data), 1)
-        self.assertNotIn(recipe1, res.data)
-        self.assertIn(recipe2, res.data)
+        self.assertNotIn(RecipeSerializer(recipe1).data, res.data)
+        self.assertIn(RecipeSerializer(recipe2).data, res.data)
